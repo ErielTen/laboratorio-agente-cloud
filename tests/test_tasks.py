@@ -31,6 +31,8 @@ class TestTasks(unittest.TestCase):
         filtradas = pendientes(tareas, "ESTUDIO")
         self.assertEqual(len(filtradas), 1)
         self.assertEqual(filtradas[0]["titulo"], "Leer documentación")
+        self.assertEqual(pendientes(tareas, "Inexistente"), [])
+        self.assertEqual(pendientes(tareas, "   "), [])
 
 if __name__ == '__main__':
     unittest.main()

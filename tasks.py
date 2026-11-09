@@ -27,6 +27,6 @@ def pendientes(tareas, categoria=None):
         return tareas_pendientes
     categoria = categoria.strip()
     if not categoria:
-        return tareas_pendientes
+        return []
     categoria_normalizada = categoria.lower()
     return [t for t in tareas_pendientes if t["categoria"].lower() == categoria_normalizada]
