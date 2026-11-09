@@ -1,8 +1,8 @@
 from tasks import agregar_tarea, pendientes
 
 
-def main():
-    tareas = []
+def main(tareas_iniciales=None):
+    tareas = list(tareas_iniciales) if tareas_iniciales else []
     while True:
         print("1. Agregar tarea")
         print("2. Ver tareas pendientes")
