@@ -1,9 +1,34 @@
-from tasks import agregar_tarea, completar_tarea, pendientes
+from tasks import agregar_tarea, pendientes
 
-tareas = []
-agregar_tarea(tareas, "Estudiar agentes cloud", "Estudio")
-agregar_tarea(tareas, "Preparar laboratorio", "Trabajo")
-completar_tarea(tareas, 1)
 
-for tarea in pendientes(tareas):
-    print(f'- {tarea["id"]}: {tarea["titulo"]}')
+def main():
+    tareas = []
+    while True:
+        print("1. Agregar tarea")
+        print("2. Ver tareas pendientes")
+        print("3. Salir")
+
+        opcion = input("Elegí una opción: ").strip()
+
+        if opcion == "1":
+            titulo = input("Título: ")
+            try:
+                agregar_tarea(tareas, titulo, "General")
+                print("Tarea agregada")
+            except ValueError as error:
+                print(error)
+        elif opcion == "2":
+            tareas_pendientes = pendientes(tareas)
+            if not tareas_pendientes:
+                print("No hay tareas pendientes")
+                continue
+            for tarea in tareas_pendientes:
+                print(f'- {tarea["id"]}: {tarea["titulo"]}')
+        elif opcion == "3":
+            break
+        else:
+            print("Opción inválida")
+
+
+if __name__ == "__main__":
+    main()
